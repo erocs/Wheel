@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5lucw1e6wk1v"]
+
+[ext_resource type="Script" uid="uid://t4m8aob6l41d" path="res://wheel.gd" id="1_8m8ww"]
+[ext_resource type="Script" uid="uid://dam2mfiqldaeo" path="res://render_sprite.gd" id="2_e0ure"]
+[ext_resource type="Script" uid="uid://c4y1tnr7d30r4" path="res://resources/settings.gd" id="2_gwn81"]
+[ext_resource type="Script" uid="uid://b3qfwbqeiay4q" path="res://resources/individual_slice.gd" id="3_mv24a"]
+
+[sub_resource type="Resource" id="Resource_mv24a"]
+script = ExtResource("2_gwn81")
+radius = 300
+font_size = 30
+metadata/_custom_type_script = "uid://c4y1tnr7d30r4"
+
+[sub_resource type="Curve" id="Curve_e0ure"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.04922279, 0.95522845), 2.0199504, 2.0199504, 0, 0, Vector2(0.1658031, 1), 0.0, 0.0, 0, 0, Vector2(0.63212436, 0.15748268), -0.8430143, -0.8430143, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[node name="Wheel" type="Node2D"]
+script = ExtResource("1_8m8ww")
+settings = SubResource("Resource_mv24a")
+rotation_curve = SubResource("Curve_e0ure")
+auto_wheel = false
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="RenderSprite" type="Sprite2D" parent="."]
+script = ExtResource("2_e0ure")
+
+[node name="Pins" type="Node2D" parent="RenderSprite"]
+
+[node name="Labels" type="Node2D" parent="RenderSprite"]
+
+[node name="Label" type="Label" parent="RenderSprite/Labels"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="wheel_stopped" from="." to="." method="_on_wheel_stopped"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

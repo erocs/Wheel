@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://s4tue3jw38yy"]
+
+[ext_resource type="Script" uid="uid://d0spyfghd3pf4" path="res://color_selector.gd" id="1_qgfpo"]
+
+[sub_resource type="Theme" id="Theme_2de0j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qgfpo"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.16470589, 0.101960786, 0.101960786, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2de0j"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.4686417, 0.19501653, 0.16312495, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="ColorSelector" type="PanelContainer"]
+anchors_preset = -1
+anchor_right = 0.26700002
+anchor_bottom = 1.006
+offset_right = 0.4159851
+offset_bottom = 0.11199951
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_2de0j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_qgfpo")
+script = ExtResource("1_qgfpo")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ColorPicker" type="ColorPicker" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2de0j")
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "Apply"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/Button" to="." method="_on_apply_button_pressed"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://de7nccn0r37a5"]
+
+[ext_resource type="Texture2D" uid="uid://bs3ew8e63ywo6" path="res://flipper.png" id="1_62qx3"]
+
+[node name="Flipper" type="RigidBody2D"]
+mass = 2.334
+gravity_scale = 1.393
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2(9.536743e-07, 1.9073486e-06)
+scale = Vector2(1.0126953, 0.9557291)
+polygon = PackedVector2Array(-9.4171884e-07, -16.741146, 15.799419, -10.463217, -9.4171884e-07, 18.833786, -9.4171884e-07, 6.2779274, 5.924782, -3.1389666, 6.9122453, -8.370574, -9.4171884e-07, -10.463217)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 18, -16, -10, 0, -16, 0, -10, -7, -8, -7, -3, 0, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_62qx3")

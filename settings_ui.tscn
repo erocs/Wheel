@@ -1,0 +1,101 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5i6vc3nc4re8"]
+
+[ext_resource type="Script" uid="uid://y1qme1vwvn5s" path="res://settings_ui.gd" id="1_r3lmy"]
+[ext_resource type="StyleBox" uid="uid://b65epqqtr1hce" path="res://settings_txbx_border.tres" id="2_r3lmy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rwyt3"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="Settings" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r3lmy")
+
+[node name="Border" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rwyt3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Border"]
+layout_mode = 2
+
+[node name="LayoutContainer" type="VBoxContainer" parent="Border/HBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="Border/HBoxContainer/LayoutContainer"]
+layout_mode = 2
+
+[node name="Apply" type="Button" parent="Border/HBoxContainer/LayoutContainer/ButtonContainer"]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_r3lmy")
+text = "Apply"
+
+[node name="AddWedge" type="Button" parent="Border/HBoxContainer/LayoutContainer/ButtonContainer"]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_r3lmy")
+text = "Add Wedge"
+
+[node name="Cancel" type="Button" parent="Border/HBoxContainer/LayoutContainer/ButtonContainer"]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_r3lmy")
+text = "Cancel"
+
+[node name="Spacer" type="Control" parent="Border/HBoxContainer/LayoutContainer/ButtonContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Reset" type="Button" parent="Border/HBoxContainer/LayoutContainer/ButtonContainer"]
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_r3lmy")
+text = "Reset"
+
+[node name="RadiusHBox" type="HBoxContainer" parent="Border/HBoxContainer/LayoutContainer"]
+layout_mode = 2
+
+[node name="RadiusLabel" type="Label" parent="Border/HBoxContainer/LayoutContainer/RadiusHBox"]
+layout_mode = 2
+text = "Radius:"
+
+[node name="RadiusTBox" type="TextEdit" parent="Border/HBoxContainer/LayoutContainer/RadiusHBox"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_r3lmy")
+
+[node name="FontSizeHBox" type="HBoxContainer" parent="Border/HBoxContainer/LayoutContainer"]
+layout_mode = 2
+
+[node name="FontSizeLabel" type="Label" parent="Border/HBoxContainer/LayoutContainer/FontSizeHBox"]
+layout_mode = 2
+text = "Font Size:"
+
+[node name="FontSizeTBox" type="TextEdit" parent="Border/HBoxContainer/LayoutContainer/FontSizeHBox"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("2_r3lmy")
+
+[node name="WobbleCheck" type="CheckButton" parent="Border/HBoxContainer/LayoutContainer"]
+layout_mode = 2
+text = "Wobble"
+
+[node name="SliceLabel" type="Label" parent="Border/HBoxContainer/LayoutContainer"]
+layout_mode = 2
+text = "Wheel Segments"
+
+[node name="SliceContainer" type="VBoxContainer" parent="Border/HBoxContainer/LayoutContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="Border/HBoxContainer/LayoutContainer/ButtonContainer/Apply" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="Border/HBoxContainer/LayoutContainer/ButtonContainer/AddWedge" to="." method="_on_add_wedge_pressed"]
+[connection signal="pressed" from="Border/HBoxContainer/LayoutContainer/ButtonContainer/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="Border/HBoxContainer/LayoutContainer/ButtonContainer/Reset" to="." method="_on_reset_pressed"]

@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd74ullgn71dm"]
+
+[ext_resource type="Script" uid="uid://btb1j5co1xai3" path="res://slice_setting.gd" id="1_gobl7"]
+[ext_resource type="StyleBox" uid="uid://draxug21wctbw" path="res://slice_setting.tres" id="2_ctw20"]
+[ext_resource type="Texture2D" uid="uid://cqpkqlgo3kikf" path="res://icon.svg" id="2_g1wkm"]
+
+[node name="SliceSetting" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -830.0
+offset_bottom = -604.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+script = ExtResource("1_gobl7")
+
+[node name="ColorBox" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_ctw20")
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="TextBoxContainer" type="HBoxContainer" parent="ColorBox/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ColorBox/MarginContainer/TextBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_g1wkm")
+expand_mode = 2
+
+[node name="WeightEdit" type="TextEdit" parent="ColorBox/MarginContainer/TextBoxContainer"]
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+placeholder_text = "1"
+
+[node name="TextEdit" type="TextEdit" parent="ColorBox/MarginContainer/TextBoxContainer"]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 2
+placeholder_text = "Rigged"
+
+[node name="DeleteButton" type="Button" parent="ColorBox/MarginContainer/TextBoxContainer"]
+layout_mode = 2
+text = "X"
+
+[connection signal="gui_input" from="ColorBox/MarginContainer/TextBoxContainer/TextureRect" to="." method="_on_texture_rect_gui_input"]
+[connection signal="pressed" from="ColorBox/MarginContainer/TextBoxContainer/DeleteButton" to="." method="_on_delete_button_pressed"]
