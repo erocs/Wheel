@@ -27,75 +27,81 @@ script = ExtResource("1_r3lmy")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_rwyt3")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Border"]
+[node name="PopoutContainer" type="HBoxContainer" parent="Border"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="LayoutContainer" type="VBoxContainer" parent="Border/HBoxContainer"]
+[node name="SettingsBox" type="VBoxContainer" parent="Border/PopoutContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ButtonContainer" type="HBoxContainer" parent="Border/HBoxContainer/LayoutContainer"]
+[node name="ButtonContainer" type="HBoxContainer" parent="Border/PopoutContainer/SettingsBox"]
 layout_mode = 2
 
-[node name="Apply" type="Button" parent="Border/HBoxContainer/LayoutContainer/ButtonContainer"]
+[node name="Apply" type="Button" parent="Border/PopoutContainer/SettingsBox/ButtonContainer"]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_r3lmy")
 text = "Apply"
 
-[node name="AddWedge" type="Button" parent="Border/HBoxContainer/LayoutContainer/ButtonContainer"]
+[node name="AddWedge" type="Button" parent="Border/PopoutContainer/SettingsBox/ButtonContainer"]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_r3lmy")
 text = "Add Wedge"
 
-[node name="Cancel" type="Button" parent="Border/HBoxContainer/LayoutContainer/ButtonContainer"]
+[node name="Cancel" type="Button" parent="Border/PopoutContainer/SettingsBox/ButtonContainer"]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_r3lmy")
 text = "Cancel"
 
-[node name="Spacer" type="Control" parent="Border/HBoxContainer/LayoutContainer/ButtonContainer"]
+[node name="Spacer" type="Control" parent="Border/PopoutContainer/SettingsBox/ButtonContainer"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
-[node name="Reset" type="Button" parent="Border/HBoxContainer/LayoutContainer/ButtonContainer"]
+[node name="Reset" type="Button" parent="Border/PopoutContainer/SettingsBox/ButtonContainer"]
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_r3lmy")
 text = "Reset"
 
-[node name="RadiusHBox" type="HBoxContainer" parent="Border/HBoxContainer/LayoutContainer"]
+[node name="RadiusHBox" type="HBoxContainer" parent="Border/PopoutContainer/SettingsBox"]
 layout_mode = 2
 
-[node name="RadiusLabel" type="Label" parent="Border/HBoxContainer/LayoutContainer/RadiusHBox"]
+[node name="RadiusLabel" type="Label" parent="Border/PopoutContainer/SettingsBox/RadiusHBox"]
 layout_mode = 2
 text = "Radius:"
 
-[node name="RadiusTBox" type="TextEdit" parent="Border/HBoxContainer/LayoutContainer/RadiusHBox"]
+[node name="RadiusTBox" type="TextEdit" parent="Border/PopoutContainer/SettingsBox/RadiusHBox"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_r3lmy")
 
-[node name="FontSizeHBox" type="HBoxContainer" parent="Border/HBoxContainer/LayoutContainer"]
+[node name="FontSizeHBox" type="HBoxContainer" parent="Border/PopoutContainer/SettingsBox"]
 layout_mode = 2
 
-[node name="FontSizeLabel" type="Label" parent="Border/HBoxContainer/LayoutContainer/FontSizeHBox"]
+[node name="FontSizeLabel" type="Label" parent="Border/PopoutContainer/SettingsBox/FontSizeHBox"]
 layout_mode = 2
 text = "Font Size:"
 
-[node name="FontSizeTBox" type="TextEdit" parent="Border/HBoxContainer/LayoutContainer/FontSizeHBox"]
+[node name="FontSizeTBox" type="TextEdit" parent="Border/PopoutContainer/SettingsBox/FontSizeHBox"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 theme_override_styles/normal = ExtResource("2_r3lmy")
 
-[node name="WobbleCheck" type="CheckButton" parent="Border/HBoxContainer/LayoutContainer"]
+[node name="WobbleCheck" type="CheckButton" parent="Border/PopoutContainer/SettingsBox"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Wobble"
 
-[node name="SliceLabel" type="Label" parent="Border/HBoxContainer/LayoutContainer"]
+[node name="SliceLabel" type="Label" parent="Border/PopoutContainer/SettingsBox"]
 layout_mode = 2
 text = "Wheel Segments"
 
-[node name="SliceContainer" type="VBoxContainer" parent="Border/HBoxContainer/LayoutContainer"]
+[node name="SliceContainer" type="VBoxContainer" parent="Border/PopoutContainer/SettingsBox"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[connection signal="pressed" from="Border/HBoxContainer/LayoutContainer/ButtonContainer/Apply" to="." method="_on_apply_pressed"]
-[connection signal="pressed" from="Border/HBoxContainer/LayoutContainer/ButtonContainer/AddWedge" to="." method="_on_add_wedge_pressed"]
-[connection signal="pressed" from="Border/HBoxContainer/LayoutContainer/ButtonContainer/Cancel" to="." method="_on_cancel_pressed"]
-[connection signal="pressed" from="Border/HBoxContainer/LayoutContainer/ButtonContainer/Reset" to="." method="_on_reset_pressed"]
+[connection signal="pressed" from="Border/PopoutContainer/SettingsBox/ButtonContainer/Apply" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="Border/PopoutContainer/SettingsBox/ButtonContainer/AddWedge" to="." method="_on_add_wedge_pressed"]
+[connection signal="pressed" from="Border/PopoutContainer/SettingsBox/ButtonContainer/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="Border/PopoutContainer/SettingsBox/ButtonContainer/Reset" to="." method="_on_reset_pressed"]

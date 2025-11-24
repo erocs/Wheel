@@ -1,12 +1,12 @@
 class_name SettingsUi
 extends ScrollContainer
 
-@onready var slice_container = $Border/HBoxContainer/LayoutContainer/SliceContainer
-@onready var top_hbox = $Border/HBoxContainer
-@onready var hbox_child = $Border/HBoxContainer/LayoutContainer
-@onready var wobble_ckbx = $Border/HBoxContainer/LayoutContainer/WobbleCheck
-@onready var radius_tbx = $Border/HBoxContainer/LayoutContainer/RadiusHBox/RadiusTBox
-@onready var font_size_tbx = $Border/HBoxContainer/LayoutContainer/FontSizeHBox/FontSizeTBox
+@onready var slice_container = $%SliceContainer
+@onready var popout_box = $%PopoutContainer
+@onready var settings_box = $%SettingsBox
+@onready var wobble_ckbx = $%WobbleCheck
+@onready var radius_tbx = $%RadiusTBox
+@onready var font_size_tbx = $%FontSizeTBox
 
 signal settings_updated(settings: Settings)
 signal reset_settings
@@ -61,9 +61,9 @@ func add_slice(slice: IndividualSlice) -> void:
 
 
 func clear_color_selector() -> void:
-	for child in top_hbox.get_children():
-		top_hbox.remove_child(child)
-	top_hbox.add_child(hbox_child)
+	for child in popout_box.get_children():
+		popout_box.remove_child(child)
+	popout_box.add_child(settings_box)
 
 
 func slices_to_settings() -> Array[IndividualSlice]:
@@ -78,10 +78,10 @@ func slices_to_settings() -> Array[IndividualSlice]:
 
 
 func _on_open_color_selector(current_color: Color, callback: Callable):
-	if top_hbox.get_child_count() >= 2:
+	if popout_box.get_child_count() >= 2:
 		clear_color_selector()
 	var color_selector = color_selector_scn.instantiate()
-	top_hbox.add_child(color_selector)
+	popout_box.add_child(color_selector)
 	color_selector.set_color(current_color)
 	color_selector.color_selected.connect(_on_color_selected.bind(callback))
 

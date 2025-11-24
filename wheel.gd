@@ -10,9 +10,9 @@ extends Node2D
 signal wheel_stopped
 
 @onready var pin_scene: Resource = preload("res://pin.tscn")
-@onready var render_sprite = $RenderSprite
-@onready var pins_container = $RenderSprite/Pins
-@onready var label_container = $RenderSprite/Labels
+@onready var render_sprite = $%RenderSprite
+@onready var pins_container = $%RenderSprite/Pins
+@onready var label_container = $%RenderSprite/Labels
 @onready var flipper = get_node("/root/Main/Flipper")
 
 var prng = RandomNumberGenerator.new()

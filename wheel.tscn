@@ -25,6 +25,7 @@ auto_wheel = false
 one_shot = true
 
 [node name="RenderSprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_e0ure")
 
 [node name="Pins" type="Node2D" parent="RenderSprite"]
